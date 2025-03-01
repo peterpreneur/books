@@ -20,7 +20,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book create(final Book book) {
         final BookEntity bookEntity = bookToBookEntity(book);
-        final BookEntity savedBookEntity = BookRepository.save(bookEntity);
+        final BookEntity savedBookEntity = bookRepository.save(bookEntity);
         return bookEntityToBook(savedBookEntity);
     }
 
