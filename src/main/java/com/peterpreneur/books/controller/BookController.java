@@ -11,8 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class BookController {
 
     private final BookService bookService;
@@ -28,7 +29,7 @@ public class BookController {
             @RequestBody final Book book) {
         book.setIsbn(isbn);
         final Book savedBook = bookService.create(book);
-        final ResponseEntity<Book> response = new ResponseEntity<Book>(book, HttpStatus.CREATED);
-        return response
+        final ResponseEntity<Book> response = new ResponseEntity<Book>(savedBook, HttpStatus.CREATED);
+        return response;
     }
 }
